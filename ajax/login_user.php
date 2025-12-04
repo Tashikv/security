@@ -18,8 +18,12 @@
 
 		#Пользователь авторизоваля
 		# 1) Создать сессию
-		$ip - $_SERVER["REMOTE_ADDR"];
-		echo $ip;
+		$ip = $_SERVER["REMOTE_ADDR"];
+		$dateStart = date("Y-m-d H:i:s");
+
+		$Sql = "INSERT INTO `session`(`idUser`,`ip`, `dateStart`, `dateNow`) VALUES ({$id}, '{$ip}', '{$dateStart}', '{$dateStart}')";
+		echo $Sql;
+		$mysqli->query($Sql);
 	}
 	echo md5(md5($id));
 ?>
